@@ -1,0 +1,6 @@
+build/
+main.dSYM/
+.vscode/
+*.o
+main
+test
