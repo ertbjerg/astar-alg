@@ -2,6 +2,8 @@
 #include <cmath>
 #include "2dgridgraph.hpp"
 
+GridGraph GridGraph::from_ascii_map(const std::string& s) { return GridGraph {s};}
+
 GridGraph::GridGraph(const std::string& s)
 {
     int x1=0, y2=0;
@@ -59,7 +61,7 @@ TEST(GridGraphClientInterface, testcase1)
         "..#.#.\n"
         "..#.#.\n"
         "....#G\n";
-    GridGraph gg(asciimap);
+    GridGraph gg = GridGraph::from_ascii_map(asciimap);
     EXPECT_NE(gg.start(), gg.goal());
 }
 
@@ -70,7 +72,7 @@ TEST(GridGraphAStarInterface, testcase1)
         "..#.#.\n"
         "..#.#.\n"
         "....#G\n";
-    GridGraph gg(asciimap);
+    GridGraph gg = GridGraph::from_ascii_map(asciimap);
     auto nb1 = gg.neighbors(gg.start());
     auto nb2 = gg.neighbors(gg.goal());
     ASSERT_EQ(nb1.size(), 2);
@@ -90,7 +92,7 @@ TEST(GridGraphAStarInterface, testcase2)
         ".S.##.\n"
         "..#G#.\n"
         "...##.\n";
-    GridGraph gg(asciimap);
+    GridGraph gg = GridGraph::from_ascii_map(asciimap);
     auto nb1 = gg.neighbors(gg.start());
     auto nb2 = gg.neighbors(gg.goal());
     EXPECT_EQ(nb1.size(), 4);
@@ -104,7 +106,7 @@ TEST(GridGraphAStarInterface, testcase_eta)
         "..#.#.\n"
         "..#.#.\n"
         "....#G\n";
-    GridGraph gg(asciimap);
+    GridGraph gg = GridGraph::from_ascii_map(asciimap);
     EXPECT_EQ(gg.eta(gg.start(), gg.goal()), 8);
     EXPECT_EQ(gg.eta(gg.goal(), gg.start()), 8);
 }
@@ -116,7 +118,7 @@ TEST(GridGraphAstarInterface, cost)
         "..#S#.\n"
         "..#G#.\n"
         "....#.\n";
-    GridGraph gg(asciimap);
+    GridGraph gg = GridGraph::from_ascii_map(asciimap);
     EXPECT_EQ(gg.cost(gg.goal(), gg.start()), 1);
 }
 
