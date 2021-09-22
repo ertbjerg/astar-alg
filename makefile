@@ -1,4 +1,4 @@
-src = 2dgridgraph.cpp AStarAlgorithm.cpp
+src = 2dgridgraph.cpp AStarAlgorithm.cpp AStarQueue.cpp
 obj = $(src:.cpp=.o)
 
 CXX = clang++
@@ -16,4 +16,3 @@ clean:
 	rm -f $(obj)
 	rm -f gtestmain.o test
 	rm -f main.o main
-
