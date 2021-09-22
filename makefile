@@ -1,4 +1,4 @@
-src = 2dgridgraph.cpp
+src = 2dgridgraph.cpp AStarQueue.cpp
 obj = $(src:.cpp=.o)
 
 CXX = clang++
