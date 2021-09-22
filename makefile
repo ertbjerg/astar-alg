@@ -1,14 +1,15 @@
-src = 2dgridgraph.cpp
+src = 2dgridgraph.cpp AStarAlgorithm.cpp
 obj = $(src:.cpp=.o)
 
 CXX = clang++
 CXXFLAGS = -std=c++17 -stdlib=libc++
+LDDFLAGS = -lgtest
 
 test: $(obj) gtestmain.o
-	$(CXX) -o $@ $^ -lgtest
+	$(CXX) -o $@ $^ $(LDDFLAGS)
 
 main: $(obj) main.o
-	$(CXX) -o $@ $^ 
+	$(CXX) -o $@ $^ $(LDDFLAGS)
 
 .PHONY: clean
 clean:

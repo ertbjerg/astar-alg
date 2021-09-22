@@ -36,13 +36,13 @@ public: // Client interface
      * string s: an ascii map of a maze 
      */
     static GridGraph from_ascii_map(const std::string& s);
-    nodeid_t start();
-    nodeid_t goal();
+    nodeid_t start() const;
+    nodeid_t goal() const;
 
 public: // A*-interface
-    std::vector<nodeid_t> neighbors(nodeid_t p);
-    int cost(nodeid_t to, nodeid_t from);
-    int eta(nodeid_t target, nodeid_t from);
+    std::vector<nodeid_t> neighbors(nodeid_t p) const;
+    int cost(nodeid_t to, nodeid_t from) const;
+    int eta(nodeid_t target, nodeid_t from) const;
 
 private:
     GridGraph(const std::string& s);

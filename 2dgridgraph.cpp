@@ -31,12 +31,12 @@ GridGraph::GridGraph(const std::string& s)
     }
 }
 
-int GridGraph::manhattan_distance(std::tuple<int, int> p, std::tuple<int, int> q) 
+int GridGraph::manhattan_distance(std::tuple<int, int> p, std::tuple<int, int> q)
 {
     return std::abs(std::get<0>(p) - std::get<0>(q)) + std::abs(std::get<1>(p) - std::get<1>(q));
 }
 
-std::vector<GridGraph::nodeid_t> GridGraph::neighbors(nodeid_t to) 
+std::vector<GridGraph::nodeid_t> GridGraph::neighbors(nodeid_t to) const
 {   
     auto is_neighbor = [to, this](nodeid_t id) {return GridGraph::manhattan_distance(this->nodes[to], this->nodes[id])==1; };
     std::vector<nodeid_t> result;
@@ -48,11 +48,11 @@ std::vector<GridGraph::nodeid_t> GridGraph::neighbors(nodeid_t to)
     return result;
 }
 
-int GridGraph::cost(nodeid_t to, nodeid_t from) {return manhattan_distance(nodes[to], nodes[from]);}
-int GridGraph::eta(nodeid_t target, nodeid_t from) {return manhattan_distance(nodes[target], nodes[from]);}
+int GridGraph::cost(nodeid_t to, nodeid_t from) const {return manhattan_distance(nodes[to], nodes[from]);}
+int GridGraph::eta(nodeid_t target, nodeid_t from) const {return manhattan_distance(nodes[target], nodes[from]);}
 
-int GridGraph::start() {return startpoint;}
-int GridGraph::goal() {return goalpoint;}
+int GridGraph::start() const {return startpoint;}
+int GridGraph::goal() const {return goalpoint;}
 
 TEST(GridGraphClientInterface, testcase1) 
 {
