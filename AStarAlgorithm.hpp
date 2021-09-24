@@ -1,8 +1,10 @@
 #include <tuple>
 #include <vector>
+#include <map>
 #include <queue>
 
 #include "2dgridgraph.hpp"
+#include "AStarQueue.hpp"
 
 #pragma once
 
@@ -17,4 +19,10 @@ private:
     const GridGraph& gr;
     GridGraph::nodeid_t goal;
     GridGraph::nodeid_t start;
+    AStarQueue frontier;
+    std::map<GridGraph::nodeid_t, PathStep> completed;
+
+    void process_neighbors(PathStep ps);
+    void initialize();
+    void prioritize(PathStep ps);
 };

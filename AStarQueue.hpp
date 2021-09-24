@@ -22,6 +22,7 @@ public:
     void merge(double prio, PathStep ps);
 
     PathStep pop_lowest_prio();
+    bool is_empty() {return queue.empty();};
 
 private:
     std::vector< std::tuple<double, PathStep> > queue;
